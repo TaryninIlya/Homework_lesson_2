@@ -1,61 +1,62 @@
-﻿
-using System;
-using System.Text.RegularExpressions;
-
-namespace Homework_lesson_2
+﻿using System.Text.RegularExpressions;
+namespace HomeworkLesson2
 {
     internal class Program
     {
-
-
-        public class class_implementation
+        public class CamelCase
         {
-            public void Interview()
+            public void ProfileForm()
             {
-                //
                 string pattern = @"^[\p{L} \.\-]+$";
-                //
-                Console.Write("Введите имя: ");
-                string? name = Console.ReadLine();
-                if (!Regex.IsMatch(name, pattern)) { name = "Неверный ввод";}
-                //
-                Console.Write("Введите фамилию: ");
-                string? surname = Console.ReadLine();
-                if (!Regex.IsMatch(surname, pattern)) { surname = "Неверный ввод"; }
-                //
-                Console.Write("Введите возраст: ");
-                string? age_str = Console.ReadLine();
+                string? name;
+                string? age_str;
                 int age;
-                if (!int.TryParse(age_str, out age))
+                string? surname;
+                string? hobby;
+                do
                 {
-                    age_str = "Неверный ввод";
+                    Console.Write("Введите имя: ");
+                    name = Console.ReadLine();
                 }
-                else
+                while (!Regex.IsMatch(name, pattern));
+                do
                 {
-                    age = Convert.ToInt32(age_str);
-                    if (age<0 ^ age>120) 
+                    Console.Write("Введите фамилию: ");
+                    surname = Console.ReadLine();
+                }
+                while (!Regex.IsMatch(surname, pattern));
+                do
+                {
+                    Console.Write("Введите возраст: ");
+                    age_str = Console.ReadLine();
+                    if (int.TryParse(age_str, out age))
                     {
-                        age_str = "Неверный ввод";
+                        age = Convert.ToInt32(age_str);
+                        if (age < 0 ^ age > 120)
+                        {
+                            age_str = null;
+                        }
+                    }
+                    else
+                    {
+                        age_str = null;
                     }
                 }
-                //
-                Console.Write("Введите род занятий: ");
-                string? Hobby = Console.ReadLine();
-                //
-                Console.WriteLine($"Имя: {name} Фамилия: {surname}  Возраст: {age_str}  Род занятий: {Hobby} ");
+                while (age_str == null);
+                do
+                {
+                    Console.Write("Введите род занятий: ");
+                    hobby = Console.ReadLine();
+                }
+                while (!Regex.IsMatch(hobby, pattern));
+                Console.WriteLine($"Имя: {name} Фамилия: {surname}  Возраст: {age_str}  Род занятий: {hobby} ");
                 Console.WriteLine(" ");
             }
-
-
         }
-        //
         static void Main(string[] args)
         {
-            class_implementation example_class_implementation = new class_implementation();
-            while (true)
-            { example_class_implementation.Interview();}
-            
+            CamelCase example_CamelCase = new CamelCase();
+            while (true) { example_CamelCase.ProfileForm(); }
         }
     }
 }
-
