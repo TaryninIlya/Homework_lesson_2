@@ -3,7 +3,7 @@ namespace HomeworkLesson2
 {
     internal class Program
     {
-        public class CamelCase
+        public class ProfileClass
         {
             public void ProfileForm()
             {
@@ -55,8 +55,8 @@ namespace HomeworkLesson2
         }
         static void Main(string[] args)
         {
-            CamelCase example_CamelCase = new CamelCase();
-            while (true) { example_CamelCase.ProfileForm(); }
+            ProfileClass exampleProfileClass = new ProfileClass();
+            while (true) { exampleProfileClass.ProfileForm(); }
         }
     }
 }
